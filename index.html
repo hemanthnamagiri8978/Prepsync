@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PrepSync - Your central hub for course materials, lecture notes, and seamless academic sharing.">
+    <title>Login | PrepSync</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body class="login-body">
+
+    <!-- Splash Screen -->
+    <div id="splash-screen"
+        style="position: fixed; inset: 0; background: #1f0b24; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; transition: opacity 0.6s ease-out;">
+
+        <!-- Blurry Bubbles (New) -->
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+
+        <!-- Sticker Background Removed -->
+
+        <div
+            style="text-align: center; position: relative; z-index: 10; animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);">
+            <div class="auth-graphic animate-floating"
+                style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(59, 130, 246, 0.2)); border-radius: 20px; padding: 40px;">
+                <ion-icon name="library-outline"
+                    style="font-size: 5rem; color: white; filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));"></ion-icon>
+            </div>
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; color: #ffffff;">
+                PrepSync</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 400px; line-height: 1.6; color: #ffffff;">Your central
+                hub for
+                course materials, lecture notes, and seamless academic sharing.</p>
+        </div>
+
+        <div class="loader" style="margin-top: 50px; display: flex; gap: 8px;">
+            <div class="dot"
+                style="width: 10px; height: 10px; background: #2563eb; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both;">
+            </div>
+            <div class="dot"
+                style="width: 10px; height: 10px; background: #2563eb; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both 0.2s;">
+            </div>
+            <div class="dot"
+                style="width: 10px; height: 10px; background: #2563eb; border-radius: 50%; opacity: 0.5; animation: bounce 1.4s infinite ease-in-out both 0.4s;">
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .sticker {
+            position: absolute;
+            font-size: 4rem;
+            animation: floatSticker 6s ease-in-out infinite;
+        }
+
+        /* Blurry Bubble Styles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            z-index: 0;
+            animation: floatBubble 10s infinite ease-in-out;
+        }
+
+        .bubble-1 {
+            width: 500px;
+            height: 500px;
+            background: #c084fc;
+            top: -150px;
+            left: -150px;
+        }
+
+        .bubble-2 {
+            width: 400px;
+            height: 400px;
+            background: #fde047;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -2s;
+        }
+
+        .bubble-3 {
+            width: 300px;
+            height: 300px;
+            background: #60a5fa;
+            top: 40%;
+            right: 10%;
+            animation-delay: -4s;
+        }
+
+        @keyframes floatBubble {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(40px, -40px);
+            }
+        }
+
+        @keyframes floatSticker {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(10px, -20px) rotate(10deg);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.style.opacity = '0';
+                    setTimeout(() => splash.remove(), 800);
+                }
+            }, 1000);
+        });
+    </script>
+
+    <!-- StuDocu Style Blobs REMOVED -->
+
+    <!-- StuDocu Style Blobs (Wrapper to avoid Grid interference) -->
+    <div
+        style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0;">
+        <div class="blob blob-pale-blue"></div>
+        <div class="blob blob-purple-sm"></div>
+        <div class="blob blob-orange"></div>
+        <div class="blob blob-lime-lg"></div>
+        <div class="blob blob-green-sm"></div>
+        <div class="blob blob-purple-btm"></div>
+    </div>
+
+    <!-- Login Card (Directly centered by Grid) -->
+
+    <div class="login-card">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 5px;">
+                <ion-icon name="shapes"
+                    style="font-size: 2rem; color: var(--primary); vertical-align: middle; margin-right: 5px;"></ion-icon>
+                PrepSync
+            </div>
+            <p style="color: rgba(255,255,255,0.7);">Your digital campus awaits.</p>
+        </div>
+
+        <form id="loginForm">
+            <div style="margin-bottom: 20px;">
+                <label
+                    style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: rgba(255,255,255,0.9);">Registration
+                    No. / Username</label>
+                <div style="position: relative;">
+                    <ion-icon name="person-outline"
+                        style="position: absolute; top: 50%; transform: translateY(-50%); left: 15px; color: rgba(255,255,255,0.5); font-size: 1.1rem; pointer-events: none;"></ion-icon>
+                    <input type="text" id="username" class="input-field" placeholder="e.g., 12345678"
+                        style="padding-left: 42px; margin-bottom: 0;" required>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label
+                    style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: rgba(255,255,255,0.9);">Password</label>
+                <div style="position: relative;">
+                    <ion-icon name="lock-closed-outline"
+                        style="position: absolute; top: 50%; transform: translateY(-50%); left: 15px; color: rgba(255,255,255,0.5); font-size: 1.1rem; pointer-events: none;"></ion-icon>
+                    <input type="password" id="password" class="input-field" placeholder="Password"
+                        style="padding-left: 42px; margin-bottom: 0;" required>
+                </div>
+            </div>
+
+            <div style="text-align: right; margin-bottom: 30px;">
+                <a href="#" id="showForgot" style="font-size: 0.85rem; color: var(--primary);">Forgot
+                    Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px;">
+                Sign In <ion-icon name="arrow-forward-outline"></ion-icon>
+            </button>
+        </form>
+
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-size: 0.85rem; text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 15px;">
+                Quick Demo Access:</p>
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-ghost demo-btn" data-role="student"
+                    style="flex: 1; justify-content: center; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.2); color: white;"><ion-icon
+                        name="school-outline"></ion-icon> Student</button>
+                <button type="button" class="btn btn-ghost demo-btn" data-role="faculty"
+                    style="flex: 1; justify-content: center; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.2); color: white;"><ion-icon
+                        name="cube-outline"></ion-icon> Faculty</button>
+            </div>
+
+            <div style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6); text-align: center;">
+                Don't have an account? <a href="#" id="showRegister"
+                    style="color: var(--primary); font-weight: 600;">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal Backdrop -->
+    <div id="registerModal"
+        style="position: fixed; inset: 0; background: rgba(15,23,42,0.85); backdrop-filter: blur(8px); z-index: 100; display: none; overflow-y: auto; padding: 20px;">
+        <div class="glass-panel"
+            style="margin: 40px auto; width: 100%; max-width: 420px; padding: 40px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); color: white; animation: popIn 0.4s ease-out;">
+            <h3 style="margin-bottom: 10px; color: white;">Create Account</h3>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 25px;">Join PrepSync to manage
+                your academics.</p>
+            <form id="registerForm">
+                <div style="margin-bottom: 15px;">
+                    <label
+                        style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Username</label>
+                    <input type="text" id="regUsername" class="input-glass" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label
+                        style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Password</label>
+                    <input type="password" id="regPassword" class="input-glass" required>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Role</label>
+                    <select id="regRole" class="input-glass" style="background: var(--bg-hero);">
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
+                </div>
+
+                <!-- Section Field -->
+                <div id="regSectionField" style="margin-bottom: 20px;">
+                    <label
+                        style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Section</label>
+                    <select id="regSection" class="input-glass" style="background: var(--bg-hero);">
+                        <option value="K23PG">K23PG</option>
+                        <option value="K23ND">K23ND</option>
+                        <option value="K23GF">K23GF</option>
+                        <option value="K23KL">K23KL</option>
+                        <option value="K23TH">K23TH</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <label
+                        style="display: block; margin-bottom: 10px; font-size: 0.85rem; color: var(--primary); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Security
+                        (for recovery)</label>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label
+                        style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Email</label>
+                    <input type="email" id="regEmail" class="input-glass" placeholder="user@example.com" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Security
+                        Question</label>
+                    <select id="regSecurityQ" class="input-glass" style="background: var(--bg-hero);">
+                        <option value="pet">What was the name of your first pet?</option>
+                        <option value="school">What elementary school did you attend?</option>
+                        <option value="city">In what city were you born?</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <label
+                        style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Answer</label>
+                    <input type="text" id="regSecurityA" class="input-glass" required>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                    <button type="button" class="btn btn-ghost" id="closeRegister">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal Backdrop -->
+    <div id="forgotModal"
+        style="position: fixed; inset: 0; background: rgba(15,23,42,0.85); backdrop-filter: blur(8px); z-index: 100; display: none; overflow-y: auto; padding: 20px;">
+        <div class="glass-panel"
+            style="margin: 40px auto; width: 100%; max-width: 420px; padding: 40px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); color: white; animation: popIn 0.4s ease-out;">
+            <h3 style="margin-bottom: 15px; color: white;">Reset Password</h3>
+
+            <!-- Step 1: Find User -->
+            <div id="forgotStep1">
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">Enter your username to find
+                    your account.</p>
+                <form id="forgotFormStep1">
+                    <div style="margin-bottom: 25px;">
+                        <label
+                            style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">Username</label>
+                        <input type="text" id="forgotUsername" class="input-glass" required>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                        <button type="button" class="btn btn-ghost" onclick="closeForgotModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Answer Question or OTP -->
+            <div id="forgotStep2" style="display: none;">
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Verify your identity.</p>
+
+                <!-- Method Toggle -->
+                <div
+                    style="display: flex; gap: 10px; margin-bottom: 25px; background: rgba(255,255,255,0.05); padding: 6px; border-radius: 12px;">
+                    <button type="button" id="tabQuestion" class="btn btn-primary"
+                        style="flex: 1; padding: 8px; font-size: 0.85rem; justify-content: center; font-weight: 600;">Security
+                        Question</button>
+                    <button type="button" id="tabOtp" class="btn btn-ghost"
+                        style="flex: 1; padding: 8px; font-size: 0.85rem; justify-content: center; font-weight: 600;">Email
+                        OTP</button>
+                </div>
+
+                <form id="forgotFormStep2">
+                    <!-- Security Question Section -->
+                    <div id="secMethodQuestion">
+                        <div style="margin-bottom: 25px;">
+                            <label
+                                style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">Question:</label>
+                            <div id="displaySecurityQ"
+                                style="font-style: italic; margin-bottom: 15px; color: white; font-weight: 600; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; border-left: 3px solid var(--primary);">
+                                ...
+                            </div>
+                            <input type="text" id="securityAnswerInput" class="input-glass" placeholder="Your Answer">
+                        </div>
+                    </div>
+
+                    <!-- OTP Section -->
+                    <div id="secMethodOtp" style="display: none;">
+                        <div style="margin-bottom: 25px;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <label style="font-size: 0.9rem; font-weight: 500;">Email OTP</label>
+                                <button type="button" id="sendOtpBtn" class="btn btn-ghost"
+                                    style="padding: 6px 12px; font-size: 0.8rem; color: var(--accent); background: rgba(56, 189, 248, 0.1);">Send
+                                    Code</button>
+                            </div>
+                            <p
+                                style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.5;">
+                                Click 'Send Code' to receive a code at your registered email.</p>
+                            <input type="text" id="otpInput" class="input-glass" placeholder="Enter 4-digit OTP"
+                                disabled>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 35px;">
+                        <button type="button" class="btn btn-ghost" onclick="closeForgotModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Verify</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: New Password -->
+            <div id="forgotStep3" style="display: none;">
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">Create a new password.</p>
+                <form id="forgotFormStep3">
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 500;">New
+                            Password</label>
+                        <input type="password" id="resetNewPassword" class="input-glass" required>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                        <button type="button" class="btn btn-ghost" onclick="closeForgotModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Reset
+                            Password</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"
+        style="position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px;">
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        function quickLogin(u, p) {
+            if (typeof AuthService !== 'undefined') {
+                AuthService.loginCallback(u, p);
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,492 @@
+:root {
+    /* StuDocu Inspired Theme */
+    --bg-hero: #1f0b24;
+    /* Deep Maroon/Purple */
+    --bg-body: #ffffff;
+    /* White body for content below hero */
+    --bg-surface: #ffffff;
+
+    --primary: #22c55e;
+    /* Lime/Green Button */
+    --primary-hover: #16a34a;
+
+    --accent: #38bdf8;
+    /* Sky Blue accent */
+    --accent-lime: #bef264;
+    --accent-orange: #fb923c;
+    --accent-purple: #d8b4fe;
+
+    --text-hero: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+
+    --radius: 16px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    --nav-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    overflow-x: hidden;
+    /* We will handle the hero background in specific containers */
+}
+
+/* --- Navigation (Studocu Style) --- */
+.navbar {
+    height: var(--nav-height);
+    background: var(--bg-hero);
+    /* Dark header */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand ion-icon {
+    font-size: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: white;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* --- Hero Section (The "See This" part) --- */
+.hero-section {
+    background-color: var(--bg-hero);
+    min-height: 500px;
+    margin-top: var(--nav-height);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+/* Organic Blobs - CSS only implementation */
+/* Organic Blobs - StuDocu Style */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    /* No blur for sharp shapes */
+    z-index: 0;
+    opacity: 0.9;
+}
+
+.blob-pale-blue {
+    width: 350px;
+    height: 350px;
+    background: #e0f2fe;
+    top: -50px;
+    left: -100px;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    transform: rotate(-10deg);
+}
+
+.blob-purple-sm {
+    width: 200px;
+    height: 200px;
+    background: #c084fc;
+    bottom: -50px;
+    left: -50px;
+    border-radius: 50%;
+}
+
+.blob-orange {
+    width: 250px;
+    height: 150px;
+    background: #f97316;
+    top: 20%;
+    right: -50px;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(20deg);
+}
+
+.blob-lime-lg {
+    width: 500px;
+    height: 500px;
+    background: #bef264;
+    bottom: -150px;
+    right: -100px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.blob-green-sm {
+    width: 150px;
+    height: 150px;
+    background: #22c55e;
+    bottom: 30%;
+    right: 50px;
+    border-radius: 50%;
+}
+
+.blob-purple-btm {
+    width: 200px;
+    height: 100px;
+    background: #d8b4fe;
+    bottom: -20px;
+    right: 300px;
+    border-radius: 50% 50% 0 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+}
+
+.hero-search {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 99px;
+    padding: 8px 8px 8px 24px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-search input {
+    border: none;
+    flex: 1;
+    font-size: 1rem;
+    outline: none;
+    color: var(--text-main);
+}
+
+.hero-search button {
+    background: var(--primary);
+    /* Green 'Sign In' style button */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.2s;
+}
+
+.hero-search button:hover {
+    background: var(--primary-hover);
+}
+
+
+/* --- Main Dashboard Content (White Section) --- */
+.dashboard-container {
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    align-items: start;
+}
+
+@media (max-width: 1100px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Sidebar Widgets */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.widget {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+}
+
+.deadline-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.deadline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.date-box {
+    background: var(--bg-hero);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 50px;
+}
+
+.date-day {
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+}
+
+.date-month {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+/* Cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.subject-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.subject-cover {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.subject-info {
+    padding: 20px;
+}
+
+.subject-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 10px 24px;
+    border-radius: 99px;
+    /* Pill shape */
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #0f172a;
+    /* Dark text on bright green often used, or white */
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-main);
+}
+
+.btn-ghost:hover {
+    background: #f1f5f9;
+}
+
+
+/* --- Login Page Specifics --- */
+.login-body {
+    background-color: var(--bg-hero);
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 50px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+    color: white;
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input-field:focus {
+    border-color: var(--primary);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* --- Badges & Helpers --- */
+.badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.badge-blue {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Modal Glass Inputs - Moved from Dashboard to Global scope */
+.input-glass {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    /* Crucial to prevent horizontal overflow */
+}
+
+.input-glass:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+}

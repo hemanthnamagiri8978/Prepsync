@@ -1,0 +1,23 @@
+# Dependency directories
+node_modules/
+
+# Database files
+prepsync.db
+*.sqlite
+*.db
+
+# Uploads directory
+uploads/
+
+# Build and environment files
+.env
+.DS_Store
+dist/
+coverage/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
